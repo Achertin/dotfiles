@@ -6,11 +6,10 @@ setxkbmap de &
 nitrogen --restore &
 ~/.config/polybar/launch.sh &
 picom --experimental-backends -b --config ~/.config/picom/picom.conf &
-lxsession &
 wmname LG3D &
 
-bspc monitor DP-0 -d 1 2 3 4 5
-bspc monitor DVI-D-0 -d 6 7 8 9
+bspc monitor DP-2 -d 1 2 3 4 5
+bspc monitor DVI-D-1 -d 6 7 8 9
 
 bspc rule -a TelegramDesktop desktop=6 follow=on 
 bspc rule -a discord desktop=7 follow=on
