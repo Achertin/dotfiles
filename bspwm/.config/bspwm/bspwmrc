@@ -8,8 +8,12 @@ nitrogen --restore &
 picom --experimental-backends -b --config ~/.config/picom/picom.conf &
 wmname LG3D &
 
+if [[ $(xrandr -q | grep 'HDMI-A-0 connected') ]]; then
+xrandr --output eDP --primary --mode 1920x1080 --output HDMI-A-0 --mode 2560x1440 --above eDP
+fi
+
 bspc monitor eDP -d 1 2 3 4 5
-bspc monitor DVI-D-1 -d 6 7 8 9
+bspc monitor HDMI-A-0 -d 6 7 8 9
 
 bspc rule -a TelegramDesktop desktop=6 follow=on 
 bspc rule -a discord desktop=7 follow=on

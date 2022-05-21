@@ -8,4 +8,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar
 polybar main &
-polybar secondary 
+
+if [[ $(xrandr -q | grep 'HDMI-A-0 connected') ]]; then
+    polybar secondary &
+fi
