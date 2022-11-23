@@ -9,3 +9,4 @@ alias ls='ls --color=auto'
 PS1=' \w›'
 
 PROMPT_DIRTRIM=3
+source /opt/ros/noetic/setup.bash

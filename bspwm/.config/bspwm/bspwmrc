@@ -5,15 +5,24 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 setxkbmap de &
 nitrogen --restore &
 ~/.config/polybar/launch.sh &
-picom --experimental-backends -b --config ~/.config/picom/picom.conf &
+picom -b --config ~/.config/picom/picom.conf &
+echo 0 > /sys/class/leds/platform\:\:micmute/brightness &
 wmname LG3D &
 
-if [[ $(xrandr -q | grep 'HDMI-A-0 connected') ]]; then
-xrandr --output eDP --primary --mode 1920x1080 --output HDMI-A-0 --mode 2560x1440 --above eDP
+if [[ $(xrandr -q | grep 'HDMI-A-0 connected') ]]
+then
+        xrandr --output eDP --mode 1920x1080 --pos 320x1440 --output HDMI-A-0 --primary --mode 2560x1440 --pos 0x0
+else
+        xrandr --output eDP --primary --mode 1920x1080
 fi
 
-bspc monitor eDP -d 1 2 3 4 5
-bspc monitor HDMI-A-0 -d 6 7 8 9
+if [[ $(xrandr -q | grep 'HDMI-A-0 connected') ]]
+then
+        bspc monitor HDMI-A-0 -d 1 2 3 4 5
+        bspc monitor eDP -d 6 7 8 9
+else
+        bspc monitor eDP -d 1 2 3 4 5
+fi
 
 bspc rule -a TelegramDesktop desktop=6 follow=on 
 bspc rule -a discord desktop=7 follow=on
