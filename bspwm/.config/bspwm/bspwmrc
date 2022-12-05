@@ -3,6 +3,7 @@
 #AUTOSTART
 pgrep -x sxhkd > /dev/null || sxhkd &
 setxkbmap de &
+xsetroot -cursor_name left_ptr &
 nitrogen --restore &
 ~/.config/polybar/launch.sh &
 picom -b --config ~/.config/picom/picom.conf &
